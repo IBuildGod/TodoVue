@@ -57,8 +57,8 @@ export default {
         newTaskText: "",
       })
     },
-    removeTask(int, object){
-      object.splice(int, 1)
+    removeTask(taskIndex, listName){
+      listName.splice(taskIndex, 1)
     }
   },
   props: ['title'],
