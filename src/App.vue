@@ -8,7 +8,7 @@
       placeholder="My new task"
       class="border-2 border-gray-50 rounded p-1 placeholder-gray-400 bg-gray-800 font-medium text-white"
     />
-    <button class="ml-2 px-2 py-1 border-2 border-gray-50 text-white rounded">Add</button>
+    <button class="ml-2 px-2 py-1 border-2 border-gray-50 text-white rounded hover:bg-gray-300 hover:text-black">Add</button>
   </form>
 
   <ul class="border-2 border-gray-50 ml-5 flow-root">
@@ -17,7 +17,7 @@
       :title="task.title"
       class="text-white pl-2 list-disc my-1 break-words w-full">
         {{ task.title }}
-      <button @click="removeTask(index, tasks)" class="float-right mr-3 hover:bg-gray-300 rounded px-2 place-items-center">x</button>
+      <button @click="removeTask(index, tasks)" class="float-right mr-3 hover:bg-gray-300 rounded px-2 place-items-center hover:text-black">x</button>
     </li>
   </ul>
 </div>
