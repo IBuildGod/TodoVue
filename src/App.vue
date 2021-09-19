@@ -1,21 +1,23 @@
 <template>
-<div id="Todo">
-  <form v-on:submit.prevent="addNewTask">
-    <label for="new-Task">Add a task </label>
+<div id="Todo" class="bg-gray-800 border-2 border-gray-50 p-3 max-w-lg">
+  <form v-on:submit.prevent="addNewTask" class="mb-5">
+    <label for="new-Task" class="pr-2 text-2xl text-white">Add a task </label>
     <input
       v-model="newTaskText"
       id="new-task"
       placeholder="My new task"
+      class="border-2 border-gray-50 rounded p-1 placeholder-gray-400 bg-gray-800 font-medium text-white"
     />
-    <button>Add</button>
+    <button class="ml-2 px-2 py-1 border-2 border-gray-50 text-white rounded">Add</button>
   </form>
 
-  <ul>
+  <ul class="border-2 border-gray-50 ml-5 flow-root">
     <li v-for="(task, index) in tasks"
       :key="task.id"
-      :title="task.title">
+      :title="task.title"
+      class="text-white pl-2 list-disc my-1 break-words w-full">
         {{ task.title }}
-      <button @click="removeTask(index, tasks)">Done</button>
+      <button @click="removeTask(index, tasks)" class="float-right mr-3 hover:bg-gray-300 rounded px-2 place-items-center">x</button>
     </li>
   </ul>
 </div>
@@ -46,9 +48,11 @@ export default {
   },
   methods: {
     addNewTask() {
+      if(this.newTaskText)
       this.tasks.push({
         id: this.id++,
-        title: this.newTaskText
+        title: this.newTaskText,
+        newTaskText: "",
       })
     },
     removeTask(int, object){
@@ -59,16 +63,3 @@ export default {
   emits: ['remove'],
 }
 </script>
-
-<style scoped>
-.demo {
-  font-family: sans-serif;
-  border: 1px solid #eee;
-  border-radius: 2px;
-  padding: 20px 30px;
-  margin-top: 1em;
-  margin-bottom: 40px;
-  user-select: none;
-  overflow-x: auto;
-}
-</style>
