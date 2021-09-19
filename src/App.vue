@@ -44,13 +44,15 @@ export default {
           title: 'task 3'
         }
       ],
+      newtaskId: 4,
     }
   },
   methods: {
     addNewTask() {
+      console.log(this.newtaskId)
       if(this.newTaskText)
       this.tasks.push({
-        id: this.id++,
+        id: this.newtaskId++,
         title: this.newTaskText,
         newTaskText: "",
       })
