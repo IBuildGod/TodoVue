@@ -126,9 +126,9 @@ export default {
       console.log(this.deletedtasks)
     },
     onChange(event, index) {
-      this.tasks[index].color = this.importance[event.target.value - 1].backgroundColor
+      this.tasks[index].color = this.importance[event.target.value].backgroundColor
       this.tasks[index].priority = event.target.value
-      console.log(this.importance[event.target.value - 1].backgroundColor)
+      console.log(this.importance[event.target.value].backgroundColor)
     },
   },
 }
