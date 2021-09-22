@@ -68,26 +68,31 @@ export default {
       importance: [
         {
           id: 1,
+          rating: 0,
+          backgroundColor: '#424242',
+        },
+        {
+          id: 2,
           rating: 1,
           backgroundColor: 'red',
         },
         {
-          id: 2,
+          id: 3,
           rating: 2,
           backgroundColor: 'orange',
         },
         {
-          id: 3,
+          id: 4,
           rating: 3,
           backgroundColor: '#8B8000',
         },
         {
-          id: 4,
+          id: 5,
           rating: 4,
           backgroundColor: 'green',
         },
         {
-          id: 5,
+          id: 6,
           rating: 5,
           backgroundColor: 'blue',
         },
