@@ -29,7 +29,24 @@
               </option>
             </select>
           </div>
-      <button @click="removeTask(index, tasks, task.id, task.title, task.priority, task.color)" class="float-right hover:bg-gray-300 mr-3 rounded px-2 place-items-center hover:text-black">x</button>
+      <button @click="removeTask(index, tasks, task.id, task.title, task.priority, task.color) " class="float-right hover:bg-gray-300 mr-3 rounded px-2 place-items-center hover:text-black">x</button>
+    </li>
+  </ul>
+</div>
+
+<div class="bg-gray-800 border-2 border-gray-50 p-3 max-w-lg">
+  <label class="pr-2 text-2xl text-white"> Archived </label>
+  <ul class="border-2 border-gray-50 ml-5 flow-root">
+    <li v-for="item in deletedtasks"
+      :key="item.id"
+      :title="item.title"
+      :priority="item.priority"
+      :color="item.color"
+      class="text-white list-disc break-words pl-2 my-1 w-full"
+      :style="{background: item.color}"
+      >
+
+        {{'id: ' + item.id + ' title: ' + item.title + ' priority: ' + item.priority + ' color: ' + item.color }}
     </li>
   </ul>
 </div>
@@ -41,6 +58,7 @@
 export default {
    data() {
     return {
+      archiveDisplay: 'none',
       newColor: '',
       newTaskText: '',
       tasks: [
@@ -64,7 +82,11 @@ export default {
         }
       ],
       newtaskId: 4,
-      deletedtasks: [{}],
+      deletedtasks: [{
+          id: null,
+          title: null,
+          priority: null,
+          color: null,}],
       importance: [
         {
           id: 1,
@@ -124,8 +146,9 @@ export default {
         color: color,
       }),
       console.log(this.deletedtasks)
+      this.archiveDisplay='block'
     },
-    onChange(event, index) {
+    onChange(event, index)   {
       this.tasks[index].color = this.importance[event.target.value].backgroundColor
       this.tasks[index].priority = event.target.value
       console.log(this.importance[event.target.value].backgroundColor)
