@@ -37,7 +37,7 @@
 <div class="bg-gray-800 border-2 border-gray-50 p-3 max-w-lg">
   <label class="pr-2 text-2xl text-white"> Archived </label>
   <ul class="border-2 border-gray-50 ml-5 flow-root">
-    <li v-for="item in deletedtasks"
+    <li v-for="(item, index) in deletedtasks"
       :key="item.id"
       :title="item.title"
       :priority="item.priority"
@@ -45,8 +45,8 @@
       class="text-white list-disc break-words pl-2 my-1 w-full"
       :style="{background: item.color}"
       >
-
         {{'id: ' + item.id + ' title: ' + item.title + ' priority: ' + item.priority + ' color: ' + item.color }}
+        <button @click="undoDelete(index, deletedtasks, item.id, item.title, item.priority, item.color) " class="float-right hover:bg-gray-300 mr-3 rounded px-2 place-items-center hover:text-black">Undo</button>
     </li>
   </ul>
 </div>
@@ -135,6 +135,7 @@ export default {
         title: this.newTaskText,
         newTaskText: "",
         color: '#424242',
+        priority: 0,
       })
     },
     removeTask(taskIndex, listName, id, title, priority, color){
@@ -148,11 +149,21 @@ export default {
       console.log(this.deletedtasks)
       this.archiveDisplay='block'
     },
-    onChange(event, index)   {
+    onChange(event, index){
       this.tasks[index].color = this.importance[event.target.value].backgroundColor
       this.tasks[index].priority = event.target.value
       console.log(this.importance[event.target.value].backgroundColor)
     },
+    undoDelete(taskIndex, listName, id, title, priority, color){
+      console.log(taskIndex)
+      listName.splice(taskIndex, 1)
+      this.tasks.push({
+        title: title,
+        id: id,
+        priority: priority,
+        color: color,
+    })
+   }
   },
 }
 </script>
